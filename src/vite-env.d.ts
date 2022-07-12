@@ -10,7 +10,8 @@ export declare global {
 
     type ReturnPromiseType<T> = T extends (data: any) => Promise<infer R> ? R : any
 
-    // typeof globalThis {
-    //     __INITIAL_DATA__: any
-    // }
+    interface SSrProps<T> {
+        data?: ReturnPromiseType<T>,
+        loading?: boolean
+    }
 }

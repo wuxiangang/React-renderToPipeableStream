@@ -1,9 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom"
-import { useData } from "@/provider/data"
+import SsrConnect from "@/components/SsrConnect"
+import { ReactElement, FC } from "react"
 
-function Name() {
-  const { data } = useData(Name as any)
-
+function Name({ data }: SSrProps<typeof Name.dataLoader>): ReactElement {
+  console.log('---', data)
   return (
     <>
       <div>My name is React!
@@ -30,4 +30,4 @@ Name.dataLoader = async (): Promise<{ list: string[] }> => {
   })
 }
 
-export default Name
+export default SsrConnect(Name)

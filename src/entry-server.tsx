@@ -14,14 +14,14 @@ type ElementLoader = ReactNode & {type: { dataLoader: () => Promise<unknown>, id
 function dataLoader(url: string) {
   const _routes = matchRoutes(routes, url);
   const keys: string[] = []
-  const all = _routes?.
-    filter(({ route: { element } }) => !!(element as ElementLoader)?.type?.dataLoader)
-    .map(({ route: { element } }) => {
+  const all = _routes?.map(({ route: { element } }) => {
       const { type } = element as ElementLoader;
+      console.log(element, type.id, type.dataLoader)
       const { dataLoader, id } = type
       keys.push(id);
       return dataLoader?.()
     })
+  console.log()
   return { keys, fetch: Promise.all(all || []) }
 }
 
