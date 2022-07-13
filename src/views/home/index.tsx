@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense, ReactElement } from 'react'
-import { NavLink, useOutlet } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import logo from './logo.svg'
 import './index.css'
 
@@ -7,7 +7,7 @@ const delay = (): Promise<any> => {
   return new Promise(resolve => {
     setTimeout(async () => {
       resolve(await import('./Article'))
-    }, 10000)
+    }, 1000)
   })
 }
 
@@ -15,9 +15,6 @@ const Article = lazy(() => delay())
 
 function Home(): ReactElement {
   const [count, setCount] = useState(0)
-
-  console.log(useOutlet())
-
 
   return (
     <div className="App">

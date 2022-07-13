@@ -1,4 +1,4 @@
-import { ReactElement, useId, useContext, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useData } from '../provider/data'
 interface ComponentProps<T> {
   (value: any): ReactElement;
@@ -8,12 +8,8 @@ interface ComponentProps<T> {
 
 function SsrConnect<T>(Component: ComponentProps<T>) {
   Child.dataLoader = Component.dataLoader
-  Child.id = 1
   function Child(): ReactElement {
-    console.log('Component.id:', Component.id)
-    Child.id = useId()
     const _data = useData(Child)
-    console.log('----:', _data, Child.id)
     const [data, setData] = useState<ReturnPromiseType<T>>(_data)
     const [loading, setLoading] = useState(false)
 
@@ -35,4 +31,5 @@ function SsrConnect<T>(Component: ComponentProps<T>) {
 
   return Child
 }
+
 export default SsrConnect

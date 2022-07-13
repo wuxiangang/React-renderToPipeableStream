@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { matchRoutes } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
@@ -9,31 +9,29 @@ import Html from './Html'
 import App from "./App";
 import "./index.css";
 
-type ElementLoader = ReactNode & {type: { dataLoader: () => Promise<unknown>, id: string }}
-
 function dataLoader(url: string) {
   const _routes = matchRoutes(routes, url);
   const keys: string[] = []
-  const all = _routes?.map(({ route: { element } }) => {
+  const top = _routes?.[0].route.path
+  const all = _routes?.
+    filter(({ route: { element } }) => !!(element as ElementLoader)?.type?.dataLoader)
+    .map(({ route: { element, path } }) => {
       const { type } = element as ElementLoader;
-      console.log(element, type.id, type.dataLoader)
-      const { dataLoader, id } = type
-      keys.push(id);
+      const { dataLoader } = type
+      keys.push(path!);
       return dataLoader?.()
     })
-  console.log()
-  return { keys, fetch: Promise.all(all || []) }
+  return { keys, fetch: Promise.all(all || []), top }
 }
 
 export async function render(url: string, res: Response) {
-  const { fetch, keys } =  dataLoader(url)
-  const data: Record<string, any> = {};
+  const { fetch, keys, top } =  dataLoader(url)
+  const data: Record<string, any> = { top };
   (await fetch).forEach((res, i) => {
     data[keys[i]] = res
   });
 
   let didError = false
-
   const stream = ReactDOMServer.renderToPipeableStream(
     <React.StrictMode>
       <StaticRouter location={url}>

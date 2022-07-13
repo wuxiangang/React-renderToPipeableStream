@@ -1,19 +1,30 @@
+import { Suspense, useState } from "react"
 import { NavLink, Outlet } from "react-router-dom"
 import SsrConnect from "@/components/SsrConnect"
-import { ReactElement, FC } from "react"
+import SuspenseChild from './suspense'
+import SuspenseChild2 from './suspense2'
+import { ReactElement } from "react"
 
 function Name({ data }: SSrProps<typeof Name.dataLoader>): ReactElement {
-  console.log('---', data)
+  const [count, setCount] = useState(0)
   return (
     <>
       <div>My name is React!
-        <NavLink to="/">跳转首页<Outlet /></NavLink>
+        <NavLink to="/">跳转首页{count}</NavLink>
       </div>
+      <button onClick={() => setCount((count) => count+1)}>Count++</button>
       {
         data?.list.map((item, i) => {
           return <a key={i}>{i}</a>
         })
       }
+      <Outlet />
+      <Suspense fallback={<p>Loading.......</p>}>
+        <SuspenseChild />
+      </Suspense>
+      <Suspense fallback={<p>SuspenseChild2 Loading.......</p>}>
+        <SuspenseChild2 />
+      </Suspense>
     </>
   )
 }
