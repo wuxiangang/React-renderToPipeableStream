@@ -2,7 +2,7 @@ import { Suspense, useState } from "react"
 import { NavLink, Outlet } from "react-router-dom"
 import SsrConnect from "@/components/SsrConnect"
 import SuspenseChild from './suspense'
-import SuspenseChild2 from './suspense2'
+// import SuspenseChild2 from './suspense2'
 import { ReactElement } from "react"
 
 function Name({ data }: SSrProps<typeof Name.dataLoader>): ReactElement {
@@ -21,9 +21,6 @@ function Name({ data }: SSrProps<typeof Name.dataLoader>): ReactElement {
       <Outlet />
       <Suspense fallback={<p>Loading.......</p>}>
         <SuspenseChild />
-      </Suspense>
-      <Suspense fallback={<p>SuspenseChild2 Loading.......</p>}>
-        <SuspenseChild2 />
       </Suspense>
     </>
   )

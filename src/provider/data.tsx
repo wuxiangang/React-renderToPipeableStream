@@ -27,7 +27,6 @@ export function useData(_ReactElement: any) {
     const arr = flatRoutes(topRoute, [])
 
     const [currentRoute] = arr.filter(({ element }) => (element as ElementLoader).type === _ReactElement)
-    console.log('currentRoute:', currentRoute)
 
     return currentRoute ? _data?.[currentRoute.path!] : null
 }
