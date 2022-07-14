@@ -16,6 +16,11 @@ export default defineConfig({
       },
     plugins: [react()],
     build: {
+      // terserOptions: {
+      //   compress: {
+      //     drop_console: false
+      //   }
+      // },
       rollupOptions: {
         input: {
           [entry]: pathResolver('./src/entry-client.tsx'),

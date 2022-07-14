@@ -1,6 +1,7 @@
-import { ReactElement, useState, Suspense } from "react"
-import useAwait from '../../hooks/useAwait'
-import SuspenseChild2 from './suspense2'
+#### useHydrate
+配合Suspense进行水合。
+```javascript
+import useHydrate from '@/hooks/useHydrate'
 
 const dataLoader = async (): Promise<{ content: string }> => {
   return new Promise(resolve => {
@@ -15,21 +16,21 @@ const dataLoader = async (): Promise<{ content: string }> => {
 
 function SuspenseChild(): ReactElement {
   const [count, setCount] = useState(0)
-
-  const data = useAwait(dataLoader).read()
+  
+  // if component re-render, data will not re-fetch
+  const data = useHydrate(dataLoader).read()
+  
+  // if component re-render, data will re-fetch like this
+  // const data = useHydrate(dataLoader, { flush: true }).read()
 
   return (
-    <div>
-      <h1>Suspense Child Component11：{count}</h1>
+    <>
+      <h1>Suspense Child Component：{count}</h1>
       <button onClick={setCount.bind(null, 2)}>Count++</button>
       <div>
         <p>{data?.content}</p>
       </div>
-      <Suspense fallback={<p>SuspenseChild2 Loading.......</p>}>
-        <SuspenseChild2 />
-      </Suspense>
-    </div>
+    </>
   )
 }
-
-export default SuspenseChild
+```

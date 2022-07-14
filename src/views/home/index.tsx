@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, ReactElement } from 'react'
+import { lazy, Suspense, ReactElement } from 'react'
 import { NavLink } from "react-router-dom"
 import logo from './logo.svg'
 import './index.css'
@@ -14,7 +14,6 @@ const delay = (): Promise<any> => {
 const Article = lazy(() => delay())
 
 function Home(): ReactElement {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
@@ -23,12 +22,7 @@ function Home(): ReactElement {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <NavLink to="/name">跳转name</NavLink>
-        </p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
+          <NavLink to="/music/1" style={{ color: '#fff' }}>跳转 Music</NavLink>
         </p>
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.

@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "express": "^4.18.1",
-    "react": "^18.0.0",
+    "react": "^18.2.0",
     "react-access-router": "^2.0.12",
-    "react-dom": "^18.0.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "serialize-javascript": "^6.0.0",
     "swr": "^1.3.0",
@@ -23,8 +23,8 @@
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^18.0.1",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@types/serialize-javascript": "^5.0.2",
     "@vitejs/plugin-react": "^1.3.0",
     "typescript": "^4.6.3",

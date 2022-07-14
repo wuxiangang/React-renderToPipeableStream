@@ -15,7 +15,7 @@ const FullApp = () => (
         </Html>
       </DataProvider>
     </BrowserRouter>
-  </React.StrictMode>
+ </React.StrictMode>
 );
 
   hydrateRoot(document.documentElement, <FullApp />);

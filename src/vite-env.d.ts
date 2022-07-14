@@ -8,11 +8,13 @@ export declare global {
         __INITIAL_DATA__: any
     }
 
-    type ReturnPromiseType<T> = T extends (data: any) => Promise<infer R> ? R : any
+    type ReturnPromiseType<T> = T extends (...args) => Promise<infer R> ? R : any
 
     type ElementLoader = ReactNode & {type: { dataLoader: () => Promise<unknown>, id: string }}
     interface SSrProps<T> {
         data?: ReturnPromiseType<T>,
         loading?: boolean
     }
+
+    type Fn = (...args) => void
 }

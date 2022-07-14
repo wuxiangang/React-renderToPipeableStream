@@ -40,7 +40,7 @@ export async function render(url: string, res: Response) {
             <App />
           </Html>
         </DataProvider>
-      </StaticRouter>
+      </StaticRouter>,
     </React.StrictMode>,
     {
       onShellReady() {

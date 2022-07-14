@@ -1,8 +1,7 @@
 import { RouteObject } from 'react-router-dom'
 import Home from '@/views/home/index';
-import Name from '@/views/name';
-import Child from '@/views/name/child';
-import Article from '@/views/article';
+import Music from '@/views/music';
+import Info from '@/views/music/info';
 
 const routes: RouteObject[] = [
     {
@@ -10,16 +9,12 @@ const routes: RouteObject[] = [
         element:<Home />,
     },
     {
-        path: '/name',
-        element: <Name />,
+        path: '/music',
+        element: <Music />,
         children: [{
-            path: '/name/:id',
-            element: <Child />
+            path: '/music/:id',
+            element: <Info />
         }]
-    },
-    {
-        path: '/article',
-        element: <Article />,
     },
     {
         path: "*",

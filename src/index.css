@@ -11,3 +11,94 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.u-tag {
+  margin-right: 1rem;
+  padding: .2rem .4rem;
+  display: inline-block;
+  color: #FFFFFF;
+  background-color: darkseagreen;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.u-music {
+  width: 600px;
+  min-height: 100%;
+  margin: 0 auto;
+  background-color: #F5F6F7;
+}
+
+.u-music h1 {
+  background-color:dimgrey;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 0 1rem;
+  color: #FFF;
+  border-radius: 10px 10px 0 0;
+}
+
+.u-music-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.u-music-info img {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+.ml-32 {
+  margin-left: 2rem;
+}
+
+.ml-16 {
+  margin-left: 1rem;
+}
+
+.pl-16 {
+  padding: 0 1rem;
+}
+
+.pb-32 {
+  padding-bottom: 2rem;
+}
+
+.u-spinner {
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  display: inline-block;
+  transition: opacity linear 0.1s;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(80, 80, 80, 0.5);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  opacity: 0;
+
+}
+
+.spinner--active {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

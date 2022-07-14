@@ -4,9 +4,7 @@ import { entry, assets } from '../config'
 
 const Html = ({ children, ssrData }: { children?: ReactNode, ssrData?: any}): ReactElement => {
   const isDev = !!import.meta.env.DEV;
-  // const data = serialize( ssrData, { isJSON: true }) //|| window.__INITIAL_DATA__
-  // console.log(serialize( data, { isJSON: true }))
-  // console.log('data:', data)
+
   return <>
     <head>
       {
