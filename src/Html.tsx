@@ -1,9 +1,10 @@
-import { ReactNode, ReactElement } from 'react'
-import serialize from 'serialize-javascript'
+import { ReactNode, ReactElement, useContext } from 'react'
 import { entry, assets } from '../config'
+import { DataContext } from "./provider/data";
 
-const Html = ({ children, ssrData }: { children?: ReactNode, ssrData?: any}): ReactElement => {
+const Html = ({ children }: { children?: ReactNode }): ReactElement => {
   const isDev = !!import.meta.env.DEV;
+  const ssrData = useContext(DataContext)
 
   return <>
     <head>

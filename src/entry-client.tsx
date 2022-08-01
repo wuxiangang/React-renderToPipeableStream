@@ -10,7 +10,7 @@ const FullApp = () => (
   <React.StrictMode>
     <BrowserRouter>
      <DataProvider data={window.__INITIAL_DATA__}>
-        <Html ssrData={window.__INITIAL_DATA__}>
+        <Html>
           <App />
         </Html>
       </DataProvider>

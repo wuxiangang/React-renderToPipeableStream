@@ -36,7 +36,7 @@ export async function render(url: string, res: Response) {
     <React.StrictMode>
       <StaticRouter location={url}>
         <DataProvider data={data}>
-          <Html ssrData={data}>
+          <Html>
             <App />
           </Html>
         </DataProvider>
